@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/agency.css" rel="stylesheet">
+<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+<body>
+
+<script>
+    videojs.autoSetup();
+
+    videojs('my_video_1').ready(function(){
+        console.log(this.options()); //log all of the default videojs options
+
+        // Store the video object
+        var myPlayer = this, id = myPlayer.id();
+        // Make up an aspect ratio
+        var aspectRatio = 264/640;
+
+        function resizeVideoJS(){
+            var width = document.getElementById(id).parentElement.offsetWidth;
+            myPlayer.width(width).height( width * aspectRatio );
+
+        }
+
+        // Initialize resizeVideoJS()
+        resizeVideoJS();
+        // Then on resize call resizeVideoJS()
+        window.onresize = resizeVideoJS;
+    });
+</script>
+<!--video width="600" height="400" autoplay controls>
+    <!source src="../video/advertising.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video-->
+<link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
+
+<!-- If you'd like to support IE8 -->
+<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<a class="navbar-brand page-scroll" href="../index.html">
+    <!--span class="fa fa-home fa-5x" style="color:#f6bf01"> </span-->
+    Made in italy
+</a>
+    <div class="row" style="padding-top: 60px;padding-left: 200px;">
+        <video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto"
+               data-setup='{ "asdf": true,"autoplay": true,  }' poster="http://video-js.zencoder.com/oceans-clip.png" >
+            <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+            <!--source src='../video/advertising.mp4' type='video/mp4'-->
+            <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'>
+        </video>
+    </div>
+<script src="http://vjs.zencdn.net/5.8.0/video.js"></script>
+</body>
+</html>
